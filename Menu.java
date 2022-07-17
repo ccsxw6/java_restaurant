@@ -13,37 +13,7 @@ public class Menu {
         this.items = i;
     }
 
-    // Method: add and remove menu items
-    // addMenuItem(String itemToAdd) -> items.put(itemToAdd)
-    // same for remove except don't use put!
-    public void addMenuItem(MenuItem itemToAdd){
-        // check if item to add is in ArrayList
-        if(items.contains(itemToAdd)){
-            System.out.println("Item already in Menu");
-        }
-        items.add(itemToAdd);
-    }
-
-
-    //Method: tell when the menu was last updated.
-    // just return a string with lastUpdated in it?? sounds a lot like the getter...
-    public void menuLastUpdate(Date udpatedDate){
-        System.out.println("Menu last updated: " +  udpatedDate);
-    }
-
-    //Method: print out both a single menu item and the entire menu. ALREADY PRINTED OUT WHOLE MENU W/ .toString method
-    // printMenuItem(itemToSearch) -> search through items, if itemToSearch is items, print out that menu item
-    // print an item at specific index
-    public void printOneItem(int indexNumber) {
-        System.out.println("Here's a single item: " + items.get(indexNumber));
-    }
-
-    // trying to print whole menu but not working
-//    public void printWholeMenu(ArrayList allItems){
-//        System.out.println("Entire Menu: " + allItems.toString());
-//    }
-
-
+    // getters/setters
     public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
@@ -55,6 +25,45 @@ public class Menu {
     }
     public ArrayList<MenuItem> getItems() {
         return items;
+    }
+
+
+    public ArrayList<MenuItem> addItem(MenuItem item){
+        for(int i = 0; i<items.size(); i++){
+            if(items.get(i).equals(item)){
+                System.out.println(item.getName() + " is already on the menu");
+            }
+        }
+        this.items.add(item);
+        return this.items;
+    }
+
+    public ArrayList<MenuItem> removeItem(MenuItem item){
+        // setting it to -1 will not remove anything from the array if item is not in the array
+        int toBeRemoved = -1;
+        for(int i = 0; i<items.size(); i++){
+            if(items.get(i).equals(item)){
+                toBeRemoved = i;
+            }
+        }
+        this.items.remove(toBeRemoved);
+        System.out.println("Remove item method: " + this.items);
+        return this.items;
+    }
+
+    public String menuUpdated(){
+        return "The menu was last updated on " + this.lastUpdated;
+    }
+
+    public void printItem(MenuItem item){
+        System.out.println("Single item description: " + item.getDescription());
+    }
+
+    public void printMenu(){
+        for(int i = 0; i < items.size(); i++){
+            // items.get(i) is same as JS items[i]
+            System.out.println("Name of item: " + items.get(i).getName() + " Description of item: " + items.get(i).getDescription());
+        }
     }
 
 }

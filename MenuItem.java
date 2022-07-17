@@ -4,16 +4,69 @@ import java.util.Date;
 import java.util.Objects;
 
 public class MenuItem {
+    private String name;
     private double price;
     private String description;
     private String category;
     private boolean isNew;
+    private Date dateAdded;
 
-    public MenuItem(double p, String d, String c, boolean iN) {
+
+    public MenuItem(String name, double p, String d, String c, boolean iN, Date dateAdded) {
+        this.name = name;
         this.price = p;
         this.description = d;
         this.category = c;
         this.isNew = iN;
+        this.dateAdded = dateAdded;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public boolean isNew() {
+        return isNew;
+    }
+
+    public void setNew(boolean aNew) {
+        isNew = aNew;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(Date dateAdded) {
+        this.dateAdded = dateAdded;
     }
 
     // Method: tell if a menu item is new.
@@ -33,28 +86,6 @@ public class MenuItem {
         }
     }
 
-    public double getPrice() {return price;}
-    public void setPrice(double price) {
-        this.price = price;
-    }
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    public String getCategory() {
-        return category;
-    }
-    public void setCategory(String category) {
-        this.category = category;
-    }
-    public boolean isNew() {
-        return isNew;
-    }
-    public void setNew(boolean aNew) {
-        isNew = aNew;
-    }
 
     @Override
     public String toString() {
@@ -76,9 +107,4 @@ public class MenuItem {
 
         return menuItem.getDescription() == getDescription();
     }
-
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(getPrice(), getDescription(), getCategory(), isNew());
-//    }
 }
